@@ -1,0 +1,186 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=cyrillic,cyrillic-ext);
+html{
+	width: 100%;
+	height: 100%;
+}
+
+body{
+	padding: 0;
+	margin: 0; 
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0, .3) url(../source/bg.jpg) no-repeat center;
+    background-blend-mode: darken;
+    position: relative;
+}
+
+*{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	box-sizing:border-box;
+	outline: none;
+} 
+
+::before, ::after{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	box-sizing:border-box;
+	outline: none;
+}
+
+/*
+*   общие стили
+*/
+.input{
+    display: block;
+    height: 54px;
+    border-radius: 3px;
+    padding: 0 1em;
+    font-size: 1.05rem;
+    color: #000000;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    border: 1px solid #C3C7CA;
+    background: #ffffff;
+    -webkit-transition: border .3s;
+    transition: border .3s;
+
+    position: relative;
+    top: 50%;
+    margin: auto;
+
+    -webkit-box-shadow: inset 0px 1px 0px 0px #EBECED;
+    -moz-box-shadow: inset 0px 1px 0px 0px #EBECED;
+    box-shadow: inset 0px 1px 0px 0px #EBECED;
+
+
+    -webkit-animation: outBackTop .5s;
+    -moz-animation: outBackTop .5s;
+    animation: outBackTop .5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+}
+
+.input:hover{
+    border: 1px solid #FFCE5B;
+}
+
+.input:focus{
+    border: 1px solid #ECAF20;
+    -webkit-box-shadow: inset 0px 0px 0px 1px #ECAF20,inset 0px 5px 12px -9px rgba(0,0,0,0.7);
+    -moz-box-shadow: inset 0px 0px 0px 1px #ECAF20,inset 0px 5px 12px -9px rgba(0,0,0,0.7);
+    box-shadow: inset 0px 0px 0px 1px #ECAF20,inset 0px 5px 12px -9px rgba(0,0,0,0.7);
+}
+
+/*подложка на весь экран*/
+.overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+/*
+*
+*  animation
+*
+*/
+/* затемнение фона всей страницы */
+.ripple-background{
+    position: absolute;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background: rgba(98,95,86, .8);
+    -moz-backface-visibility:hidden;
+    backface-visibility:hidden;
+
+    -moz-transform: rotate(0.01deg);
+
+    -webkit-animation: ripple-animation .5s;
+    -moz-animation: ripple-animation .5s;
+    animation: ripple-animation .5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+}
+@-moz-document url-prefix() {
+    .ripple-background{
+        transform: rotate(1deg);
+    }
+}
+
+
+footer{
+    display: block;
+    width: 100%;
+    padding: 0 1em;
+    position: absolute;
+    bottom: 1em;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    color: #ffffff;
+
+}
+
+@-webkit-keyframes outBackTop {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-100%);
+    }
+    75% {
+        -webkit-transform: translateY(10%);
+    }
+    100% {
+        -webkit-transform: translateY(0);
+    }
+}
+
+@keyframes outBackTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    75% {
+        transform: translateY(10%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/*
+*
+*   анимация затемнения фона
+*
+**/
+
+@-webkit-keyframes ripple-animation {
+    from {
+        -webkit-transform: scale(1);
+    }
+    to {
+        -webkit-transform: scale(45);
+    }
+}
+
+@-moz-keyframes ripple-animation {
+    from {
+        -moz-transform: scale(1);
+    }
+    to {
+        -moz-transform: scale(45);
+    }
+}
+
+@keyframes ripple-animation {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(45);
+    }
+}
